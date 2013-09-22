@@ -36,26 +36,26 @@ extern "C"
     if (PyErr_Occurred()) SWIG_fail;
 }
 %inline %{
-void _shepard_interp_nd( int m1, int nd1, double* xd, int nd2, double* zd, double p, int m3, int nd3, double* xi, int nd4, double* za) 
+void _shepard_interp_nd( int m1, int nd1, double* xd, int nd2, double* zd, int m3, int nd3, double* xi, int nd4, double* za, double p)  
 {
     if (m1 != m3) {
         PyErr_Format(PyExc_ValueError,
-                     "Dimensions of Arrays of don't match, lengths (%d,%d) given",
+                     "Dimensions of Arrays don't match, lengths (%d,%d) given",
                      m1, m3);
     }
     if (nd1 != nd2) {
         PyErr_Format(PyExc_ValueError,
-                     "Dimensions of Arrays of don't match, lengths (%d,%d) given",
+                     "Dimensions of Arrays don't match, lengths (%d,%d) given",
                      nd1, nd2);
     }
     if (nd3 != nd4) {
         PyErr_Format(PyExc_ValueError,
-                     "Dimensions of Arrays of don't match, lengths (%d,%d) given",
+                     "Dimensions of Arrays don't match, lengths (%d,%d) given",
                      nd3, nd4);
     }
 
-	int i;
-	double *tmp = NULL;
+    int i;
+    double *tmp = NULL;
     tmp = shepard_interp_nd(m1,nd1,xd,zd,p,nd3,xi);
     for( i = 0; i < nd3; i++){
         za[i] = tmp[i];
