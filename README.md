@@ -5,8 +5,10 @@ numpy interface to shepard algorithm from http://people.sc.fsu.edu/~jburkardt/c_
 
 ## Compilation
 Compile with cmake in an extra directory:
-```cmake /path/to/shepard_interp/src
-make```
+```
+cmake /path/to/shepard_interp/src
+make
+```
 
 ## Example usage of python module:
 ```
