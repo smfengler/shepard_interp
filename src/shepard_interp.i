@@ -65,7 +65,12 @@ void _shepard_interp_nd( int m1, int nd1, double* xd, int nd2, double* zd, int m
 
 %pythoncode %{
 def shepard_interp_nd(X,f, Xk, p):
-    return _shepard_interp.shepard_interp_nd(X,f,Xk,Xk.shape[1],p)
+    if len(Xk.shape) > 2:
+        raise ValueError
+    if len(Xk.shape) == 1:
+        return _shepard_interp.shepard_interp_nd(X.reshape(1,-1),f,Xk.reshape(1,-1),Xk.size,p)
+    else:
+        return _shepard_interp.shepard_interp_nd(X,f,Xk,Xk.shape[1],p)
 %}
 
 %clear (int m1, int nd1, double* xd),(int nd2, double* zd),(int m3, int nd3, double* xi),(int nd4, double* za);
