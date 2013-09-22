@@ -27,7 +27,8 @@ extern "C"
 %rename (shepard_interp_nd) _shepard_interp_nd;
 %ignore shepard_interp_nd;
 /*%include "shepard_interp_nd.h"*/
-/*double *shepard_interp_nd ( int m, int nd, double xd[], double zd[], double p, int ni, double xi[] );*/
+%feature("autodoc");
+double *shepard_interp_nd ( int m, int nd, double xd[], double zd[], double p, int ni, double xi[] );
 
 %exception _shepard_interp_nd {
     $action
