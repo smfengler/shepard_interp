@@ -2,8 +2,14 @@ shepard_interp
 ==============
 
 numpy interface to shepard algorithm from http://people.sc.fsu.edu/~jburkardt/c_src/sparse_interp_nd/sparse_interp_nd.html
-compile with cmake in an extra directory
-example usage:
+
+## Compilation
+Compile with cmake in an extra directory:
+`cmake /path/to/shepard_interp/src`
+`make`
+
+## Example usage of python module:
+```
 import shepard_interp
 import numpy as np
 import matplotlib.pyplot as pl
@@ -17,4 +23,4 @@ ff=shepard_interp.shepard_interp_nd(xr,f,xg,2.)
 ff.shape=10,-1
 pl.imshow(ff)
 pl.show()
-
+```
